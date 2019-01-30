@@ -1,0 +1,48 @@
+---
+output: html_document
+---
+#Statistical Inference 
+##Project 1
+###Part2
+In this second part of the project we are going to investigate some of properties of the
+ToothGrowth data set. The data comes from a study on 10 guinea pigs which recorded the response in growth of teeth, in each of 10 guinea pigs, for each of three dose levels of Vitamin C (0.5,1 and 2 mg), by two different delivery methods, orange juice(OJ) and ascorbic acid (VC).
+```{r}
+data(ToothGrowth)
+tg <- ToothGrowth
+```
+Some initial exploratory analysis
+```{r}
+summary(tg)
+str(tg)
+plot(tg)
+```
+
+```{r}
+dose0.5 <- tg[tg$dose==0.5,]
+dose1 <- tg[tg$dose==1,]
+dose2 <- tg[tg$dose==2,]
+suppvc <- tg[tg$supp=='VC',]
+suppoj <- tg[tg$supp=='OJ',]
+```
+###Assumptions
+Because this is a study with small sample sizes and I don't know if the measurements are paired the Welch T test will  be used for the analysis.\newline
+
+This is a test for the hypothesis that the mean growth caused by the dosage of $0.5$mg is the same as for a dosage of $1$mg
+```{r}
+t.test(dose0.5$len,dose1$len)
+```
+The conclusion is no, since the $0$ is not included in the confidence interval. Hence we can say that a dosage of $0.5$mg causes smaller mean growth then the dosage of $1$mg. This we can say with a $95\%$ probability of being true. \newline
+
+This is a test for the hypothesis that, the mean growth of a dosage of $1$mg, is equal to the growth caused by a dosage of $2$mg
+```{r}
+t.test(dose1$len,dose2$len)
+```
+The conclusion is no, since the $0$ is not included in the confidence interval. Hence we can say that dosage of $1$mg causes smaller mean growth then the dosage of $2$mg. This we can say with a $95\%$ probability of being true. \newline
+
+And finaly a test for the hypothesis that, the mean growth caused by using ascorbic acid = (VC),
+is equal to the mean growth of using orange juice = (OJ).
+```{r}
+t.test(suppvc$len,suppoj$len)
+
+```
+Since the $0$ is inside the interval. We can say that using ascorbic acid causes the same growth as using orange juice. With a probability of $95\%$ of being true.

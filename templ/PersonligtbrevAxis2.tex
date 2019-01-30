@@ -1,0 +1,176 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Cover letter Axis},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+  \title{Cover letter Axis}
+  \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{}
+  \preauthor{}\postauthor{}
+  \date{}
+  \predate{}\postdate{}
+
+
+\begin{document}
+\maketitle
+
+\begin{center}\rule{0.77\paperwidth}{\linethickness}\end{center}
+%{0.5\linewidth}{\linethickness}\end{center}
+
+\textbf{Hampus Hjelm Andersson}\\
+Gärdesgata 13, 33533, Gnosjö\\
+\href{https://github.com/HHA123/Job/}{Github Account}
+\textbar{}\textbar{}
+\href{mailto:hampusha@hotmail.com}{\nolinkurl{hampusha@hotmail.com}}
+\textbar{}\textbar{} (+46) 0708282487
+
+June 10, 2018\\
+Reference number: 2274
+
+\begin{center}\rule{0.77\paperwidth}{\linethickness}\end{center}
+
+\hypertarget{section}{%
+\section{\texorpdfstring{\\
+}{ }}\label{section}}
+
+Dear Hiring Manager
+
+I am writing to you to express my Great interest for the position of
+``Image technology engineer on Product Platforms''.
+
+My brother Alexander Hjelm Bankers works on your company and recommends
+it highly as a very good place to work.
+
+\begin{itemize}
+\item
+  I have a Masters in Mathematics from Linköpings University and the
+  greatest asset I can bring to your company from my studies in
+  mathematics would to be able to understand the meaning of mathematical
+  formula and to generalize it to new problems, this would probably be
+  very useful to you in creating new products.
+\item
+  I also have a great interests in (convolution) neural networks and
+  it's application to image processing, you can see a small exampel of
+  an implementation I have done in digit recognition in Tensorflow
+  \href{https://github.com/HHA123/Job/blob/master/TensorflowNNdigit.ipynb}{here}.
+\item
+  Further more I have some experience with
+  \href{https://github.com/HHA123/Job/blob/master/RepRes2.html}{data
+  processing} and
+  \href{https://github.com/HHA123/Job/blob/master/Statinf2.Rmd}{statistics}
+  in R
+\item
+  My experience in meditation can help me better to coup with stress and
+  to let go of old ways of thinking which I think can be very helpful
+  for having an experimental way of thinking which could help you to
+  develop new functionalities.
+\item
+  I am very eager to learn more about C , convulotional neural networks
+  and other imageprocessing algorithms.
+\end{itemize}
+
+I would greatly appreciate the opportunity to meet with you to discuss
+what I have to bring to the position at Axis\\
+for instances, I can already think of some suggestions for
+functionalities to your surveillance cameras\\
+
+\begin{itemize}
+\tightlist
+\item
+  a functionality to choose so that some people are ``allowable'' and
+  others not.
+\item
+  a functionality so that the user can choose to use an algorithm in a
+  limited field of visible space, for instances if you have a backyard
+  towards a street you might want to register if someone goes into the
+  backyard but exclude the area of the street.
+\item
+  if the cameras are connected to the internet one could have servers
+  that the cameras can connect to with gpu:s that could make more
+  advanced calculations then would be possible to do on a single camera
+\item
+  making a functionality so that the user can choose what objects to
+  detect: e.g.~say if someone have a graffiti problem, then the user
+  should be able to add algorithms to detect spray cans\ldots{}
+\item
+  making sure that algorithms are user friendly
+\end{itemize}
+
+Thank you for your time and consideration
+
+Sincerely,
+
+Hampus Hjelm Andersson
+
+
+\end{document}

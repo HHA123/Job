@@ -1,0 +1,77 @@
+---
+title: "PracticalMachineLeraning"
+output: html_document
+---
+This is a project in the course practical machine learning, from John Hopkins coursera.org. The aim of this project is to predict the manner of which a group of participants performed different exercises (This is in the classe variable). This will be done with machine learning and the data supplied by <http://groupware.les.inf.puc-rio.br/har> and downloaded from
+<https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv>. The covariates used for prediction describe features such as position,acceleration and pitch of various body parts.
+
+
+```{r,eval=FALSE}
+library(caret)
+
+data <- read.csv("pml-training.csv")
+cleandata <- function(data){
+        
+        isBad <- sapply(1:dim(data)[2],function(x){sum(is.na(data)[,x])>10 || levels(data[,x])[1]==""})
+        isBad[is.na(isBad)]<- FALSE
+        data <- data[,!isBad]
+        data[,2] <- as.numeric(data[,2])
+        data <- data[,-c(1,3:6)]
+        return(data)
+}
+data <- cleandata(data)
+
+#creating set for crossvalidation
+inTrain <- createDataPartition(data[,55],p=0.7,list=FALSE)
+training <- data[inTrain,]
+
+testing <- data[-inTrain,]
+ Control <- trainControl(number=3,repeats=1)
+ modFit <- train(classe~.,method="gbm",data=training,trControl=Control,verbose=FALSE)
+ 
+
+pred <- predict(modFit,testing[,-55])
+ 
+confusionMatrix(pred,testing[,55])
+Confusion Matrix and Statistics
+
+          Reference
+Prediction    A    B    C    D    E
+         A 1670   14    0    0    0
+         B    4 1111   13    8    9
+         C    0   14 1010    5    1
+         D    0    0    3  951    7
+         E    0    0    0    0 1065
+
+Overall Statistics
+                                          
+               Accuracy : 0.9867          
+                 95% CI : (0.9835, 0.9895)
+    No Information Rate : 0.2845          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.9832          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: A Class: B Class: C Class: D
+Sensitivity            0.9976   0.9754   0.9844   0.9865
+Specificity            0.9967   0.9928   0.9959   0.9980
+Pos Pred Value         0.9917   0.9703   0.9806   0.9896
+Neg Pred Value         0.9990   0.9941   0.9967   0.9974
+Prevalence             0.2845   0.1935   0.1743   0.1638
+Detection Rate         0.2838   0.1888   0.1716   0.1616
+Detection Prevalence   0.2862   0.1946   0.1750   0.1633
+Balanced Accuracy      0.9971   0.9841   0.9901   0.9922
+                     Class: E
+Sensitivity            0.9843
+Specificity            1.0000
+Pos Pred Value         1.0000
+Neg Pred Value         0.9965
+Prevalence             0.1839
+Detection Rate         0.1810
+Detection Prevalence   0.1810
+Balanced Accuracy      0.9921
+
+Thus out of sample error $1.33\$
