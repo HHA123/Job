@@ -1,540 +1,233 @@
-% Don't like 10pt? Try 11pt or 12pt
-\documentclass[10pt]{article}
-
-% The automated optical recognition software used to digitize resume
-% information works best with fonts that do not have serifs. This
-% command uses a sans serif font throughout. Uncomment both lines (or at
-% least the second) to restore a Roman font (i.e., a font with serifs).
-%\usepackage{times}
-%\renewcommand{\familydefault}{\sfdefault}
-
-% This is a helpful package that puts math inside length specifications
-\usepackage[utf8]{inputenc}
-%\usepackage[latin1]{inputenc}
-\usepackage[swedish, english]{babel}
-\usepackage{calc}
-\usepackage{comment}
-
-% Simpler bibsection for CV sections
-% (thanks to natbib for inspiration)
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Cover letter CellaVision},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
 \makeatletter
-\newlength{\bibhang}
-\setlength{\bibhang}{1em} %1em}
-\newlength{\bibsep}
- {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
-\newenvironment{bibsection}%
-        {\begin{enumerate}{}{%
-%        {\begin{list}{}{%
-       \setlength{\leftmargin}{\bibhang}%
-       \setlength{\itemindent}{-\leftmargin}%
-       \setlength{\itemsep}{\bibsep}%
-       \setlength{\parsep}{\z@}%
-        \setlength{\partopsep}{0pt}%
-        \setlength{\topsep}{0pt}}}
-        {\end{enumerate}\vspace{-.6\baselineskip}}
-%        {\end{list}\vspace{-.6\baselineskip}}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
 \makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
 
-% Layout: Puts the section titles on left side of page
-\reversemarginpar
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
 
-%
-%         PAPER SIZE, PAGE NUMBER, AND DOCUMENT LAYOUT NOTES:
-%
-% The next \usepackage line changes the layout for CV style section
-% headings as marginal notes. It also sets up the paper size as either
-% letter or A4. By default, letter was used. If A4 paper is desired,
-% comment out the letterpaper lines and uncomment the a4paper lines.
-%
-% As you can see, the margin widths and section title widths can be
-% easily adjusted.
-%
-% ALSO: Notice that the includefoot option can be commented OUT in order
-% to put the PAGE NUMBER *IN* the bottom margin. This will make the
-% effective text area larger.
-%
-% IF YOU WISH TO REMOVE THE ``of LASTPAGE'' next to each page number,
-% see the note about the +LP and -LP lines below. Comment out the +LP
-% and uncomment the -LP.
-%
-% IF YOU WISH TO REMOVE PAGE NUMBERS, be sure that the includefoot line
-% is uncommented and ALSO uncomment the \pagestyle{empty} a few lines
-% below.
-%
+%%% Change title format to be more compact
+\usepackage{titling}
 
-%% Use these lines for letter-sized paper
-\usepackage[paper=letterpaper,
-            %includefoot, % Uncomment to put page number above margin
-            marginparwidth=1.2in,     % Length of section titles
-            marginparsep=.05in,       % Space between titles and text
-            margin=1in,               % 1 inch margins
-            includemp]{geometry}
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
 
-%% Use these lines for A4-sized paper
-%\usepackage[paper=a4paper,
-%            %includefoot, % Uncomment to put page number above margin
-%            marginparwidth=30.5mm,    % Length of section titles
-%            marginparsep=1.5mm,       % Space between titles and text
-%            margin=25mm,              % 25mm margins
-%            includemp]{geometry}
+\setlength{\droptitle}{-2em}
+  \title{Cover letter\vspace{1cm}} %CellaVision}
+%\begin{figure}[H]
+%\centering
+%\end{figure}
 
-%% More layout: Get rid of indenting throughout entire document
-\setlength{\parindent}{0in}
+  \pretitle{\scalebox{0.9}[0.8]{\includegraphics{cellavi.png}}
+\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+  \author{}
+  \preauthor{}\postauthor{}
+  \date{}
+  \predate{}\postdate{}
 
-\usepackage[shortlabels]{enumitem}
-
-%% Reference the last page in the page number
-%
-% NOTE: comment the +LP line and uncomment the -LP line to have page
-%       numbers without the ``of ##'' last page reference)
-%
-% NOTE: uncomment the \pagestyle{empty} line to get rid of all page
-%       numbers (make sure includefoot is commented out above)
-%
-\usepackage{fancyhdr,lastpage}
-\pagestyle{fancy}
-%\pagestyle{empty}      % Uncomment this to get rid of page numbers
-\fancyhf{}\renewcommand{\headrulewidth}{0pt}
-\fancyfootoffset{\marginparsep+\marginparwidth}
-\newlength{\footpageshift}
-\setlength{\footpageshift}
-          {0.5\textwidth+0.5\marginparsep+0.5\marginparwidth-2in}
-\lfoot{\hspace{\footpageshift}%
-       \parbox{4in}{\, \hfill %
-                    \arabic{page} of \protect\pageref*{LastPage} % +LP
-%                    \arabic{page}                               % -LP
-                    \hfill \,}}
-
-% Finally, give us PDF bookmarks
-\usepackage{color,hyperref}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
-\hypersetup{colorlinks,breaklinks,
-            linkcolor=darkblue,urlcolor=darkblue,
-            anchorcolor=darkblue,citecolor=darkblue}
-
-%%%%%%%%%%%%%%%%%%%%%%%% End Document Setup %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% The title (name) with a horizontal rule under it
-% (optional argument typesets an object right-justified across from name
-%  as well)
-%
-% Usage: \makeheading{name}
-%        OR
-%        \makeheading[right_object]{name}
-%
-% Place at top of document. It should be the first thing.
-% If ``right_object'' is provided in the square-braced optional
-% argument, it will be right justified on the same line as ``name'' at
-% the top of the CV. For example:
-%
-%       \makeheading[\emph{Curriculum vitae}]{Your Name}
-%
-% will put an emphasized ``Curriculum vitae'' at the top of the document
-% as a title. Likewise, a picture could be included:
-%
-%   \makeheading[\includegraphics[height=1.5in]{my_picutre}]{Your Name}
-%
-% the picture will be flush right across from the name.
-\newcommand{\makeheading}[2][]%
-        {\hspace*{-\marginparsep minus \marginparwidth}%
-         \begin{minipage}[t]{\textwidth+\marginparwidth+\marginparsep}%
-             {\large \bfseries #2 \hfill #1}\\[-0.15\baselineskip]%
-                 \rule{\columnwidth}{1pt}%
-         \end{minipage}}
-
-% The section headings
-%
-% Usage: \section{section name}
-\renewcommand{\section}[1]{\pagebreak[3]%
-    \hyphenpenalty=10000%
-    \vspace{1.3\baselineskip}%
-    \phantomsection\addcontentsline{toc}{section}{#1}%
-    \noindent\llap{\scshape\smash{\parbox[t]{\marginparwidth}{\raggedright #1}}}%
-    \vspace{-\baselineskip}\par}
-
-% An itemize-style list with lots of space between items
-\newenvironment{outerlist}[1][\enskip\textbullet]%
-        {\begin{itemize}[#1,leftmargin=*]}{\end{itemize}%
-         \vspace{-.6\baselineskip}}
-
-% An environment IDENTICAL to outerlist that has better pre-list spacing
-% when used as the first thing in a \section
-\newenvironment{lonelist}[1][\enskip\textbullet]%
-        {\begin{list}{#1}{%
-        \setlength{\partopsep}{0pt}%
-        \setlength{\topsep}{0pt}}}
-        {\end{list}\vspace{-.6\baselineskip}}
-
-% An itemize-style list with little space between items
-\newenvironment{innerlist}[1][\enskip\textbullet]%
-        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
-        {\end{itemize}}
-
-% An environment IDENTICAL to innerlist that has better pre-list spacing
-% when used as the first thing in a \section
-\newenvironment{loneinnerlist}[1][\enskip\textbullet]%
-        {\begin{itemize}[#1,leftmargin=*,parsep=0pt,itemsep=0pt,topsep=0pt,partopsep=0pt]}
-        {\end{itemize}\vspace{-.6\baselineskip}}
-
-% To add some paragraph space between lines.
-% This also tells LaTeX to preferably break a page on one of these gaps
-% if there is a needed pagebreak nearby.
-\newcommand{\blankline}{\quad\pagebreak[3]}
-\newcommand{\halfblankline}{\quad\vspace{-0.5\baselineskip}\pagebreak[3]}
-
-% Uses hyperref to link DOI
-\newcommand\doilink[1]{\href{http://dx.doi.org/#1}{#1}}
-\newcommand\doi[1]{doi:\doilink{#1}}
-
-% For \url{SOME_URL}, links SOME_URL to the url SOME_URL
-\providecommand*\url[1]{\href{#1}{#1}}
-% Same as above, but pretty-prints SOME_URL in teletype fixed-width font
-\renewcommand*\url[1]{\href{#1}{\texttt{#1}}}
-
-% For \email{ADDRESS}, links ADDRESS to the url mailto:ADDRESS
-\providecommand*\email[1]{\href{mailto:#1}{#1}}
-% Same as above, but pretty-prints ADDRESS in teletype fixed-width font
-%\renewcommand*\email[1]{\href{mailto:#1}{\texttt{#1}}}
-
-%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-%    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
-%\providecommand\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-%    \TeX}}
-\providecommand\BibTeX{{B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
-    \TeX}}
-\providecommand\Matlab{\textsc{Matlab}}
-
-%%%%%%%%%%%%%%%%%%%%%%%% End Helper Commands %%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%% Begin CV Document %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-\makeheading{Hampus Hjelm Andersson}
+%\maketitle
 
-\section{Contact Information}
 
-% NOTE: Mind where the & separators and \\ breaks are in the following
-%       table.
-%
-% ALSO: \rcollength is the width of the right column of the table
-%       (adjust it to your liking; default is 1.85in).
-%
-\newlength{\rcollength}\setlength{\rcollength}{1.4in}%
-%
-\begin{tabular}[t]{@{}p{\textwidth-\rcollength}p{\rcollength}}
-\makebox{\parbox{\textwidth}{%
-Gärdesgatan 13, 33533 ,\\
-Gnosjö, Sweden  \\
-\phantom{hahaha}
-\
-}}
+
+\maketitle
+
+\begin{center}\rule{0.99\linewidth}{\linethickness}\end{center}
+%0.77
+\textbf{Hampus Hjelm Andersson}\\
+Gärdesgata 13, 33533, Gnosjö\\
+\href{https://github.com/HHA123/Job/}{\textbf{Github Account:github.com/HHA123/Job}
+}
+\textbar{}\textbar{}
+\href{mailto:hampusha@hotmail.com}{\nolinkurl{hampusha@hotmail.com}}
+\textbar{}\textbar{} (+46) 0708282487 \\
+February 5, 2019
+\vspace{1mm}
+\begin{center}\rule{0.99\linewidth}{\linethickness}\end{center}
+%0.77
+\hypertarget{section}{%
+\section{\texorpdfstring{\\
+}{ }}\label{section}}
+
+Dear Hiring Manager
+
+I am writing to you to express my Great interest for the position of
+"Junior Software engineer".
+
+I saw your recruitment add on your website and found it very interesting.
+I particularly like that you use image analysis and neural networks
+ to create products that  help people.
+ I have my self been training neural networks and convolutional neural networks for
+ the last 6 months and would like to continue with
+ this in a professional setting.
+The things I might be able to contribute to your company would be.
+
+
+
+
+%My brother Alexander Hjelm Bankers works on your company and recommends
+%it highly as a very good place to work.
+
+\begin{itemize}
+\item
+  I have a Masters in Mathematics from Linköpings University, the
+  experience that I have from these studies in
+  mathematics help me to be able to understand the meaning of mathematical
+  formula and to generalize it to new problems.
+%, this would probably be  very useful to you in creating new products.
+\item
+  I also have a great interests in (convolution) neural networks and
+  it's application to image processing, you can see a small example of
+  an implementation I have done in digit recognition in Tensorflow
+  \href{https://github.com/HHA123/Job/blob/master/TensorflowNNdigit.ipynb}{\textbf{here}}.
+
+\item
+  To illustrate some of what I've learnt in the training of
+ convolutional neural networks, I tried solving the histopathologic-cancer-detection challenge
+ at kaggle.com, where one is asked to predict whether there is cancer
+ in images of lymph node sections. To solve this problem with over 220 thousand
+pictures I had to use some common data techniques such as, data generators,
+ splitting data in training, validation and test set, data augmentation,
+transfer learning, fixing initial layers after some time of training,
+ test time augmentation was also used on the test set.
+ When submitted to Kaggle this yielded a result of 97.07\% only 0.86 percentile
+ from the highest result.
+You can see the jupyter notebook \href{https://github.com/HHA123/Job/blob/master/histo-pat-cancer.ipynb}{\textbf{here}}
+
+  
+
+\item
+ Some of my favorite courses during University were Matrix analysis, Linear algebra
+honors course and linear algebra which
+I think can help to make it easier to understand what
+ different layers in the convolutional does. And I also believe it could help to develop
+new models.
+
  
-& 
-\makebox{\parbox{\textwidth}{%
-+46-(0)708282487,\\
-\phantom{+46-(0)370-99663}\\
-\email{hampusha@hotmail.com}
-}}
-
-    
-\end{tabular}
-
-%\section{Objective}
-
-%Insert text here if you want to
-%\begin{innerlist}
-%\item More information and auxiliary documents can be found at\\\url{http://www.tedpavlic.com/facjobsearch/}
-%\end{innerlist}
-\section{Job Interests}
-\begin{innerlist}
-\item Deep learning, the pipeline surrounding deeplearning i.e getting and 
-cleaning data, data augmentation, model building, and putting it all together in
-applications
-\item  Data science in general
-\item  Mathematical computing
-\end{innerlist}
 
 
-\begin{comment}
-\section{Research Interests}
-\begin{innerlist}
-	\item
-	Neuroscience: Functional brain imaging, emotion regulation and vulnerability to stress, well-being due to contemplative practices (meditation), changes in plasticity due to contemplative practices, neural basis of contemplative practices, neuroscience in general...
-\end{innerlist}
-\begin{innerlist}
-	\item
-	Computational Mathematics: Feed-forward and Recurrent Networks, Stochastic Networks,Computing with regards to Plasticity and Learning.
-\end{innerlist}
-\end{comment}
-
-\section{Education}
-
-\begin{outerlist}
-\item[]Individual Courses in Computer Science \hfill{2016}
- \begin{innerlist}
-\item  Coursera Data Science Specialization: Data Scientist't toolbox, R programming, 
-Getting and Cleaning data, Exploratory Data Analysis, Reproducible Research, 
-Statistical Inference, Regression Models, Practical Machine Learning.
-
-\item Coursera Advanced Machine Learning: \hfill{2018}\\
-Introduction to Deep Learning, Deep Leraning in Computer Vision
- \end{innerlist}
-\end{outerlist}
-
-\begin{outerlist}
-\item[] Courses in Neuroscience \hfill{2015-2016}
-\begin{innerlist}
-\item Cognition and emotion, Object-oriented programming java,
- Langeuage technology systems, Cognitive modelling
-\end{innerlist}
-\end{outerlist}
-
-\href{http://www.liu.se/?l=en&sc=true}{\textbf{Linköping University}},
-Linköping
-\begin{outerlist}
+\item
+  Further more I have some experience with
+ % \href{https://github.com/HHA123/Job/blob/master/RepRes2.html}
+\href{htmlpreview.github.io/?https://github.com/HHA123/Job/blob/master/RepRes2.html}
+{\textbf{data processing}} and
+  \href{htmlpreview.github.io/?https://github.com/HHA123/Job/blob/master/Statinf2.Rmd}{\textbf{statistics}}
+  in R
+%\item
+ % My experience in meditation can help me better to coup with stress and
+ % to let go of old ways of thinking which I think can be very helpful
+ % for having an experimental way of thinking which could help you to
+ % develop new functionalities.
 
 
-\item[] M.S.,
-        \href{http://www.mai.liu.se/index-e.html}
-             {Mathematics},
-             Jun 2014
-        \begin{innerlist}
-        \item Topic: \emph{Properties Of The Product Of Countably 
- Many Real Lines In The Box Topology}
-        \item Advisor:
-              \href{http://www.mai.liu.se/~vitja/}
-                   {Vitalij Tjatyrko , D.Sc.}
-        \end{innerlist}
-\end{outerlist}
-\vspace{.1in}
-%\href{http://www.mnsu.edu}{\textbf{Minnesota State University}},
-%Mankato, MN
-\begin{outerlist}
-\item[] B.S.,
-        \href{http://www.mai.liu.se/index-e.html}
-             {Mathematics} , Jun 2010
-        \begin{innerlist}
-        \item Topic: \emph{Classification Of Second Order Symmetric
- Tensors In The Lorentz Metric}
-        \item Advisor:
-              \href{http://www.mai.liu.se/~gober/}
-                   {Göran Bergqvist , Ph.D}
-        \end{innerlist}
-
-\end{outerlist}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
-
-\section{Research Experience}
-
-\textbf{Research Assistant} \hfill {May 2011 to present}
-\begin{innerlist}
-
-\item[] Division of Biostatistics,\\
-        University of Minnesota\\
-        Supervisor: Bradley P. Carlin, Ph.D
-\end{innerlist}
-\textbf{Research Assistant} \hfill {June 2010 to May 2011}
-\begin{innerlist}
-
-\item[] Division of Epidemiology,\\
-        University of Minnesota\\
-        Supervisors: Traci L. Toomey, Ph.D and Bradley P. Carlin, Ph.D
-\end{innerlist}
-\textbf{Research Assistant} \hfill {Sept 2008 to Aug 2010}
-\begin{innerlist}
-
-\item[] Division of Biostatistics,\\
-        University of Minnesota\\
-        Supervisors: Katherine Huppler-Hullsiek, Ph.D and Jason V. Baker, M.D., M.S.
-\end{innerlist}
-
-\section{Refereed Journal Publications}
-\vspace{-.1275in}
-\begin{bibsection}
-    \item Baker, J., Duprez, D., Rapkin, J., Huppler-Hullsiek, K., {\bf Quick, H.}, Grimm, R., Neaton, J.D., and Henry, K.  ``Untreated HIV infection and large and small artery elasticity." \emph{JAIDS}, 52(1):25--31, 2009.
-    \item Baker, J., Ayenew, W., {\bf Quick, H.}, Huppler-Hullsiek, K., Tracy, R., Henry, K., Duprez, D., and Neaton, J.D.  ``High-density lipoprotein particles and markers of inflammation and thrombotic activity in patients with untreated HIV infection." \emph{Journal of Infectious Diseases}, 201(2):285--292, 2010.
-    \item Baker, J., {\bf Quick, H.}, Huppler-Hullsiek, K., Tracy, R., Duprez, D., Henry, K., and Neaton, J.D.  ``IL-6 and d-dimer levels are associated with vascular dysfunction in patients with untreated HIV infection." \emph{HIV Medicine}, 11(9):608--609, 2010.
-    \item Kunisaki, K.M., {\bf Quick, H.}, and Baker, J.V.  ``HIV antiretroviral therapy reduces circulating surfactant protein-D levels." \emph{HIV Medicine}, 12(9):580--581, 2011.
-    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., {\bf Quick, H.S.}, Harwood, E.M., Lenk, K.M., and Ecklund, A.M.  ``Is the density of alcohol establishments related to non-violent crime?" \emph{Journal of Studies on Alcohol and Drugs}, 73(1)21--25, 2012.
-    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., Lenk, K.M., {\bf Quick, H.S.}, Jones, A.M., and Haroowd, E.M. ``The association between density of alcohol establishments and violent crime within urban neighborhoods."  \emph{Alcoholism: Clinical and Experimental Research}, 36(8):1468--1473, 2012.
-        %To appear \emph{Alcoholism: Clinical and Experimental Research}, 2012.
-    \item {\bf Quick, H.}, Banerjee, S., and Carlin, B.P. ``Modeling temporal gradients in regionally aggregated California asthma hospitalization data." To appear in {\em The Annals of Applied Statistics}, 2012.
-\end{bibsection}
-
-\section{Submitted Journal Publications}
-\vspace{-.125in}
-\begin{bibsection}
-    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., Lenk, K.M., {\bf Quick, H.S.}, and Harwood, E.M. ``Do neighborhood attributes moderate the relationship between alcohol establishment density and crime?" 2012. Submitted to \emph{Prevention Science}.
-\end{bibsection}
-
-% Add a little space to nudge next ``Conference Publications'' marginpar
-% down to make room for tall ``Submitted Journal Publications''
-% marginpar. If there are enough submitted journal publications, this
-% space will not be needed (and should be removed).
-%\vspace{0.1in}
-
-\section{Papers in Preparation}
-\vspace{-.1in}
-\begin{bibsection}
-%    \item Toomey, T.L., Erickson, D.J., Carlin, B.P., Lenk, K.M., {\bf Quick, H.S.}, and Harwood, E.M. ``Do neighborhood attributes moderate the relationship between alcohol establishment density and crime?"
-    \item {\bf Quick, H.}, Banerjee, S., and Carlin, B.P. ``Heteroscedastic variances in areally referenced temporal processes with an application to California asthma hospitalization data.''
-
-    \item {\bf Quick, H.}, Carlin, B.P., and Banerjee, S. ``Space-time Gaussian process modeling of temporal air pollution gradients."
-\end{bibsection}
-
-\section{Awards}
-Travel Awards
-\begin{innerlist}
-\item Workshop on Environmetrics, Raleigh, NC\hfill Oct 2012
-\item Case Studies in Bayesian Statistics and\hfill Oct 2011\\
-Machine Learning, Pittsburgh, PA
-\item IMS/ISBA Joint International Meeting, Park City, UT\hfill Jan 2011
-\end{innerlist}
-
-\halfblankline
-
-Student Awards --- University of Minnesota, Division of Biostatistics
-\begin{innerlist}
-\item Outstanding Teaching Assistant Award\hfill May 2012
-\item Outstanding Research Assistant Award\hfill May 2011
-\item James R. Boen Student Achievement Award\hfill May 2009
-\end{innerlist}
-
-\halfblankline
-
-Student Awards --- University of Minnesota, Graduate School
-\begin{innerlist}
-\item Doctoral Dissertation Fellowship\hfill 2012--2013
-\begin{innerlist}
-    \item The Doctoral Dissertation Fellowship (DDF) program is intended to give the most accomplished final-year PhD candidates an opportunity to complete the dissertation within the 2012--13 academic year by devoting full-time effort to research and writing.
-\end{innerlist}
-\end{innerlist}
-
-\section{Presentations}
-Statistical Meetings
-\begin{innerlist}
-\item Workshop on Environmetrics, Raleigh, NC \hfill Oct 2012
-\item Joint Statistical Meetings, San Diego, CA \hfill Aug 2012
-\item Biometric Society (ENAR) Regional Meeting, Washington, D.C. \hfill Apr 2012
-\item Case Studies in Bayesian Statistics and\hfill Oct 2011\\
-Machine Learning, Pittsburgh, PA
-\item Biometric Society (ENAR) Regional Meeting, Miami, FL \hfill Mar 2011
-\item IMS/ISBA Joint International Meeting, Park City, UT \hfill Jan 2011
-\end{innerlist}
-
-\halfblankline
-
-University of Minnesota
-\begin{innerlist}
-\item Mostly Markov Chain Seminar Series \hfill Nov 2011
-\item School of Public Health Research Day \hfill Apr 2011
-\end{innerlist}
-
-\end{comment}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Teaching Experience}
-
-%\textbf{Teaching Assistant} \hfill {Springs 2011--12}
-Maple Teaching Assistant \hfill {Spring 2011}
-\begin{innerlist}
-\item[] TATA43 - Calculus in several variables\\
-        Instructor: Lars Alexandersson\\
-        Department of Mathematics,\\
-        Linköping University
-\end{innerlist}
-
-Teaching Assistant \hfill {Autumns 2009--10}
-\begin{innerlist}
-
-\item[] TATM79 - Foundation Course in Mathematics\\
-        Instructor: Göran Forsling\\
-	Department of Mathematics,\\
-        Linköping University
-\end{innerlist}
-
-\section{Life experience}
-
-\begin{outerlist}
-\item[] Traveling and visiting meditation retreats
-\begin{innerlist}[label=$\diamond$]
-\item Meditation center \href{https://www.sobhana.dhamma.org/sv/}{Dhamma sobhana}, Ödeshög \hfill{Autumn 2012, 2017}
-\item Meditation center \href{www.tushita.info}{Tushita} in Dharamsala, India \hfill{Spring 2013}
-\item Visiting \href{www.deerpark.in}{Deer park} meditation center, India \hfill{Spring 2013}
-\item Meditation center \href{www.suanmokkh-idh.org}{Suan Mokkh}, Thailand \hfill{Spring 2014}
-\item Meditation center Wat ram poeng, Chiang Mai, Thailand \hfill{Spring 2014}
-\item \href{https://www.kowthamcenter.org/teachings/what-is-meditation/}{Wat kow tam} meditation center, Thailand \hfill{Spring 2014}
-\item \href{https://www.amaravati.org}{Amaravati Buddhist Monestary}, England \hfill{Spring 2014 \& 2018}
-\end{innerlist}
-\end{outerlist}
+\item
+  The things I primary would like to work with professionally is data processing
+, training and test of different kinds of neural networks and visualization of
+the result for domain experts, i.e class activation maps or other
+ simlilar techniques.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
-\begin{comment}
-\section{Service}
-Recruiting Committee, Division of Biostatistics \hfill {May 2010 -- Present}
-\begin{innerlist}
-    \item Assist with planning of annual Division of Biostatistics Open House and Admitted Student Visit Days
-    \item Meet with prospective and admitted students %; answer questions from a student's perspective
-\end{innerlist}
+%\item
+%  I am very eager to learn more about C , convulotional neural networks
+%  and other imageprocessing algorithms.
+\end{itemize}
 
-\halfblankline
+I would greatly appreciate the opportunity to meet with you to discuss
+what I have to bring to the position at CellaVision\\
+%for instances, I can already think of some suggestions for
+%functionalities to your surveillance cameras\\
 
-Student Member of Search Committee for the \hfill {June 2010 -- Aug 2010}\\
-SPH Coordinator of Recruitment and Student Leadership
-\begin{innerlist}
-    \item Assisted in job search for the SPH Coordinator of Recruitment and Student Leadership
-    \item Reviewed applications, conducted interviews
-\end{innerlist}
+%\begin{itemize}
+%\tightlist
+%\item
+%  a functionality to choose so that some people are ``allowable'' and
+%  others not.
+%\item
+%  a functionality so that the user can choose to use an algorithm in a
+%  limited field of visible space, for instances if you have a backyard
+%  towards a street you might want to register if someone goes into the
+%  backyard but exclude the area of the street.
+%\item
+%  if the cameras are connected to the internet one could have servers
+%  that the cameras can connect to with gpu:s that could make more
+%  advanced calculations then would be possible to do on a single camera
+%\item
+%  making a functionality so that the user can choose what objects to
+%  detect: e.g.~say if someone have a graffiti problem, then the user
+%  should be able to add algorithms to detect spray cans\ldots{}
+%\item
+%  making sure that algorithms are user friendly
+%\end{itemize}
 
-\end{comment}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55
+Thank you for your time and consideration
 
+Sincerely,
 
-\section{References}
+Hampus Hjelm Andersson
 
-Göran Bergqvist
-\begin{innerlist}
-\item[]  Professor of Applied Mathematics \hfill {Phone: +46 - 13 - 28 40 64}\\
-Department of Mathematics \hfill{E-mail:gober@mai.liu.se}\\
-Linköping University
-\end{innerlist}
-
-\halfblankline
-
-Vitalij Tjatyrko
-\begin{innerlist}
-\item[]Associate Professor \hfill {Phone: +46 - 13 - 28 28 56}\\
-Department of Mathematics \hfill{E-mail: vitja@mai.liu.se }\\
-Linköping University 
-\end{innerlist}
-
-\halfblankline
-
-Ulf Janfalk
-\begin{innerlist}
-\item[] Senior lecturer \hfill {Phone: +46 - 13 - 28 23 74}\\
-Department of Mathematics \hfill{E-mail: uljan@mai.liu.se}\\
-Linköping University
-\end{innerlist}
-
-
-\section{Software Skills}
-%\begin{comment}
-Computer Programming:
-
-\begin{innerlist}
-    \item Python,Tensorflow, R, \Matlab, Maple, \LaTeX, C$+$$+$, basic linux
-\end{innerlist}
-
-\halfblankline
-%\end{comment}
 
 \end{document}
